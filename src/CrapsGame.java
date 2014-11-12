@@ -1,9 +1,10 @@
 // Implements the game of Craps logic
+// Yingli's Code
+// This implements the game, Craps, and outlines the rules and processes of the game
 
 public class CrapsGame
 {
   private int point = 0;
-  private int savedPoint = 0;
 
   /**
    *  Calculates the result of the next dice roll in the Craps game.
@@ -22,32 +23,33 @@ public class CrapsGame
    *    If the shooter rolls one of these numbers on the come-out roll, this establishes the 
    *    "point" - to "pass" or "win", the point number must be rolled again before a seven."
    */
+   
   public int processRoll(int total)
   {
 	int result = 0; // -1 player lost, 0 games continue, 1 player won
 	
 	if (point == 0){
 		if (total == 7 || total == 11){
-			result = 1;
+			result = 1; // if the player rolls a 7 or 11 on the first turn, they win once
 			
 		}else if(total == 2 || total == 3 || total == 12){
-			result = -1;
+			result = -1; // if the player rolls a 2, 3 or 12 on the first turn, they lose once
 			
 		}else{
-			result = 0;
+			result = 0; // if they player gets anything other than 7, 11, 2, 3, or 12, they continue in the code
 			point = total;
 		}
 		
 	}else if (point != 0){
-		if ((total == 7)){
+		if ((total == 7)){ // if the player gets a 7 on the second round after a point is established, they lose
 			result = -1;
-			point = 0;  //******* Need to reset points
+			point = 0;  // resets the total points so that it doesn't create an infinite loop
 			  
-		}else if (total == point){
+		}else if (total == point){ // if the player gets the same number as in the 'point' round, they win
 			result = 1;
-			point = 0; // ******** Need to reset points
+			point = 0; // resets the total points so that it doesn't create an infinite loop
 			  
-		}else{
+		}else{ // if the player gets anything that's not 7 or the point, they repeat
 			result = 0;
 		  }
 	  }
