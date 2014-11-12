@@ -1,4 +1,6 @@
 // Implements a rolling die object.
+// Yingli's code
+// We wrote parts of this code in class, though most of the program was already written
 
 import java.awt.Graphics;
 import java.awt.Color;
@@ -156,8 +158,10 @@ public class RollingDie extends Die
     int y1 = y + step - 1;
     int y2 = y + 3*step;
     int y3 = y + 5*step + 1;
-
-    switch (numDots)
+              // this gives the positions of each coordinate so that we can plot the dots on the die later
+              // combine x and y values to create coordinate points for each dot on the die
+              
+    switch (numDots) // uses a switch to produce the physical appearance of the die depending on the numDots on the die 
     {
       case 1:
           g.fillOval(x2, y2, dotSize, dotSize);
